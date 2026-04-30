@@ -1,0 +1,157 @@
+.hero{
+  min-height:100vh;
+  padding:140px 0 80px;
+  position:relative; overflow:hidden;
+}
+.heroGrid{
+  display:grid;
+  grid-template-columns:1fr 460px;
+  gap:60px;
+  align-items:end;
+}
+
+.hero h1{
+  margin-top:22px;
+  font-family: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  font-weight:800;
+  font-size:clamp(64px,9.2vw,148px);
+  line-height:0.92;
+  letter-spacing:-0.045em;
+}
+.it{
+  font-family: var(--font-instrument), "Instrument Serif", serif;
+  font-weight:400; font-style:italic;
+  letter-spacing:-0.01em;
+  color:var(--violet);
+}
+.stamp{
+  display:inline-block;
+  background:var(--lime);
+  padding:0 18px 6px;
+  border-radius:14px;
+  transform:rotate(-2deg);
+  box-shadow:0 8px 0 var(--ink);
+}
+.nameJp{
+  margin-top:18px;
+  font-size:16px; color:var(--ink-soft);
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  letter-spacing:0.12em;
+}
+.lede{
+  margin-top:28px;
+  max-width:540px;
+  font-size:17px; line-height:1.7;
+  color:var(--ink);
+}
+.heroMeta{
+  margin-top:40px;
+  display:flex; gap:28px; flex-wrap:wrap;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.heroMeta b{display:block; color:var(--ink); font-weight:700; margin-bottom:4px;}
+
+/* portrait */
+.portraitStage{
+  position:relative;
+  aspect-ratio:4/5;
+  width:100%;
+}
+.portraitBlob{
+  position:absolute; inset:0;
+  background:linear-gradient(160deg,var(--violet) 0%,var(--pink) 60%,var(--peach) 100%);
+  clip-path:path("M 230 10 C 340 0, 430 70, 450 200 C 470 320, 410 430, 290 460 C 170 490, 60 420, 30 290 C 0 160, 120 20, 230 10 Z");
+  box-shadow:0 30px 80px -30px rgba(91,33,182,.4);
+}
+.portraitBlob::after{
+  content:""; position:absolute; inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  mix-blend-mode:overlay; opacity:.6;
+}
+.portraitPhoto{
+  position:absolute; inset:0;
+  clip-path:path("M 230 10 C 340 0, 430 70, 450 200 C 470 320, 410 430, 290 460 C 170 490, 60 420, 30 290 C 0 160, 120 20, 230 10 Z");
+  overflow:hidden;
+  transform:translate(-14px,14px);
+}
+.portraitImg{
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  transform:rotate(-20deg) scale(1.2);
+}
+.portraitTag{
+  position:absolute; right:-10px; top:8%;
+  background:var(--ink); color:var(--bg);
+  padding:14px 18px;
+  border-radius:16px;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  font-size:11px; letter-spacing:0.14em;
+  transform:rotate(6deg);
+  z-index:3;
+  box-shadow:0 14px 30px -12px rgba(20,17,15,.45);
+}
+.portraitTag b{
+  display:block; color:var(--lime);
+  font-size:14px; margin-bottom:2px; letter-spacing:0.06em;
+}
+.portraitBadge{
+  position:absolute; right:-20px; bottom:6%;
+  width:130px; height:130px;
+  border-radius:999px;
+  background:var(--lime);
+  color:var(--ink);
+  display:grid; place-items:center;
+  text-align:center;
+  font-family: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  font-weight:800;
+  font-size:13px;
+  line-height:1.2;
+  transform:rotate(-12deg);
+  z-index:3;
+  border:2px solid var(--ink);
+  animation:spinBadge 14s linear infinite;
+}
+.portraitBadge::before{
+  content:"★";
+  position:absolute; inset:auto auto -10px -10px;
+  width:32px; height:32px; border-radius:999px;
+  background:var(--ink); color:var(--lime);
+  display:grid; place-items:center; font-size:14px;
+}
+@keyframes spinBadge{to{transform:rotate(348deg);}}
+
+/* floating shapes */
+.deco{position:absolute; pointer-events:none; z-index:0;}
+.s1{top:15%; right:-60px; width:180px; height:180px;}
+.s2{bottom:-4%; left:42%; width:120px; height:120px;}
+.s3{top:28%; left:38%; width:90px; height:90px;}
+.s1 svg{animation:float1 9s ease-in-out infinite;}
+.s2 svg{animation:float2 11s ease-in-out infinite;}
+.s3 svg{animation:float3 7s ease-in-out infinite;}
+
+@keyframes float1{0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-22px) rotate(8deg);}}
+@keyframes float2{0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(18px) rotate(-12deg);}}
+@keyframes float3{0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-14px) rotate(20deg);}}
+
+@media (max-width:960px){
+  .hero{padding:120px 0 60px;}
+  .heroGrid{grid-template-columns:1fr; gap:50px;}
+  .portraitStage{max-width:380px; margin:0 auto;}
+  .hero h1{font-size:clamp(48px,11vw,96px);}
+  .s1{width:120px; height:120px; right:-40px;}
+}
+@media (max-width:600px){
+  .hero{padding:110px 0 40px; min-height:auto;}
+  .hero h1{font-size:clamp(40px,12vw,72px);}
+  .portraitStage{max-width:300px;}
+  .portraitBadge{right:-8px; bottom:4%; width:100px; height:100px; font-size:11px;}
+  .portraitTag{right:0; padding:10px 14px; font-size:10px;}
+  .portraitTag b{font-size:12px;}
+  .s1{width:100px; height:100px; right:-20px;}
+  .s2{left:56%; bottom:-6%; width:92px; height:92px;}
+  .s3{width:60px; height:60px;}
+  .heroMeta{gap:18px;}
+}
