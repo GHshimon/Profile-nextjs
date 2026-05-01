@@ -27,9 +27,9 @@ export default function Contact() {
         </p>
 
         <div className="contact-links">
-          <a className="clink reveal d2" href="mailto:douchi.shimon@gmail.com">
+          <a className="clink reveal d2" href="mailto:hello@shimon-dev.com">
             <span className="ico">✉</span>
-            douchi.shimon@gmail.com
+            hello@shimon-dev.com
             <span className="arr">→</span>
           </a>
           <a
@@ -46,9 +46,14 @@ export default function Contact() {
             github.com/GHshimon
             <span className="arr">→</span>
           </a>
-          <a className="clink reveal d4" href="#">
+          <a
+            className="clink reveal d4"
+            href="https://x.com/shimon_dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="ico">𝕏</span>
-            @shimon_d_design
+            @shimon_dev
             <span className="arr">→</span>
           </a>
         </div>
