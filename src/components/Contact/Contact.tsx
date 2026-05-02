@@ -1,4 +1,96 @@
+'use client'
+
+import { useState } from 'react'
+import { Turnstile } from '@marsidev/react-turnstile'
+
+type Category = 'Web制作' | 'DX相談' | 'AI導入' | 'その他'
+
+type FormState = {
+  name: string
+  email: string
+  company: string
+  category: Category | ''
+  message: string
+  consent: boolean
+}
+
+const initialForm: FormState = {
+  name: '',
+  email: '',
+  company: '',
+  category: '',
+  message: '',
+  consent: false,
+}
+
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'
+
 export default function Contact() {
+  const [form, setForm] = useState<FormState>(initialForm)
+  const [turnstileToken, setTurnstileToken] = useState<string>('')
+  const [submitting, setSubmitting] = useState(false)
+  const [result, setResult] = useState<
+    { kind: 'idle' } | { kind: 'success'; message: string } | { kind: 'error'; message: string }
+  >({ kind: 'idle' })
+
+  function update<K extends keyof FormState>(key: K, value: FormState[K]) {
+    setForm((prev) => ({ ...prev, [key]: value }))
+  }
+
+  function validate(): string | null {
+    if (!form.name.trim()) return 'お名前を入力してください。'
+    if (!form.email.trim()) return 'メールアドレスを入力してください。'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return 'メールアドレスの形式が正しくありません。'
+    if (!form.category) return '用件カテゴリを選択してください。'
+    if (form.message.trim().length < 20) return 'お問い合わせ内容は20文字以上で入力してください。'
+    if (!form.consent) return 'プライバシーポリシーへの同意が必要です。'
+    if (!turnstileToken) return 'セキュリティ確認(Turnstile)を完了してください。'
+    return null
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    const err = validate()
+    if (err) {
+      setResult({ kind: 'error', message: err })
+      return
+    }
+    setSubmitting(true)
+    setResult({ kind: 'idle' })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, turnstileToken }),
+      })
+      const data: { ok: boolean; message?: string } = await res
+        .json()
+        .catch(() => ({ ok: false, message: 'サーバーからの応答を解釈できませんでした。' }))
+
+      if (res.ok && data.ok) {
+        setForm(initialForm)
+        setTurnstileToken('')
+        setResult({
+          kind: 'success',
+          message: '送信ありがとうございました。返信は通常1〜2営業日以内です。',
+        })
+      } else {
+        setResult({
+          kind: 'error',
+          message: data.message || '送信に失敗しました。時間をおいて再度お試しください。',
+        })
+      }
+    } catch {
+      setResult({
+        kind: 'error',
+        message: 'ネットワークエラーが発生しました。接続を確認してください。',
+      })
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <section className="contact" id="contact">
       <div className="deco s1" style={{ top: '10%', left: '6%', right: 'auto' }}>
@@ -26,35 +118,113 @@ export default function Contact() {
           まずは 30分のカジュアル相談から、お気軽にどうぞ。
         </p>
 
-        <div className="contact-links">
-          <a className="clink reveal d2" href="mailto:hello@shimon-dev.com">
-            <span className="ico">✉</span>
-            hello@shimon-dev.com
-            <span className="arr">→</span>
+        <form className="contact-form reveal d2" onSubmit={handleSubmit} noValidate>
+          <div className="row">
+            <label htmlFor="cf-name">名前 <span className="req">*</span></label>
+            <input
+              id="cf-name"
+              type="text"
+              value={form.name}
+              onChange={(e) => update('name', e.target.value)}
+              required
+              autoComplete="name"
+            />
+          </div>
+
+          <div className="row">
+            <label htmlFor="cf-email">メールアドレス <span className="req">*</span></label>
+            <input
+              id="cf-email"
+              type="email"
+              value={form.email}
+              onChange={(e) => update('email', e.target.value)}
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <div className="row">
+            <label htmlFor="cf-company">会社名</label>
+            <input
+              id="cf-company"
+              type="text"
+              value={form.company}
+              onChange={(e) => update('company', e.target.value)}
+              autoComplete="organization"
+            />
+          </div>
+
+          <div className="row">
+            <label htmlFor="cf-category">用件カテゴリ <span className="req">*</span></label>
+            <select
+              id="cf-category"
+              value={form.category}
+              onChange={(e) => update('category', e.target.value as Category | '')}
+              required
+            >
+              <option value="" disabled>選択してください</option>
+              <option value="Web制作">Web制作</option>
+              <option value="DX相談">DX相談</option>
+              <option value="AI導入">AI導入</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <div className="row">
+            <label htmlFor="cf-message">内容 <span className="req">*</span> <span className="hint">（20文字以上）</span></label>
+            <textarea
+              id="cf-message"
+              rows={5}
+              value={form.message}
+              onChange={(e) => update('message', e.target.value)}
+              required
+              minLength={20}
+            />
+          </div>
+
+          <div className="row checkbox-row">
+            <input
+              id="cf-consent"
+              type="checkbox"
+              checked={form.consent}
+              onChange={(e) => update('consent', e.target.checked)}
+              required
+            />
+            <label htmlFor="cf-consent" className="inline">
+              <a href="#" className="policy-link">プライバシーポリシー</a>に同意します <span className="req">*</span>
+            </label>
+          </div>
+
+          <div className="row">
+            <Turnstile
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={(token) => setTurnstileToken(token)}
+              onError={() => setTurnstileToken('')}
+              onExpire={() => setTurnstileToken('')}
+              options={{ theme: 'light' }}
+            />
+          </div>
+
+          <button type="submit" className="submit" disabled={submitting}>
+            {submitting ? '送信中…' : '送信する'}
+          </button>
+
+          {result.kind === 'success' && (
+            <div className="form-result success" role="status">{result.message}</div>
+          )}
+          {result.kind === 'error' && (
+            <div className="form-result error" role="alert">{result.message}</div>
+          )}
+        </form>
+
+        <div className="contact-other reveal d3">
+          <span className="other-label">他の連絡手段</span>
+          <a href="mailto:hello@shimon-dev.com">✉ hello@shimon-dev.com</a>
+          <a href="https://github.com/GHshimon" target="_blank" rel="noopener noreferrer">
+            GitHub
           </a>
-          <a
-            className="clink reveal d3"
-            href="https://github.com/GHshimon"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="ico">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
-              </svg>
-            </span>
-            github.com/GHshimon
-            <span className="arr">→</span>
-          </a>
-          <a
-            className="clink reveal d4"
-            href="https://x.com/shimon_dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="ico">𝕏</span>
-            @shimon_dev
-            <span className="arr">→</span>
+          <a href="https://x.com/shimon_dev" target="_blank" rel="noopener noreferrer">
+            𝕏 @shimon_dev
           </a>
         </div>
 
