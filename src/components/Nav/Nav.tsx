@@ -1,7 +1,13 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './Nav.module.css'
 
 export default function Nav() {
+  const pathname = usePathname()
+  if (pathname?.startsWith('/admin')) return null
+
   return (
     <nav className={styles.nav}>
       <div className={styles.brand}>
