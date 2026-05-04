@@ -47,6 +47,7 @@ export type Database = {
           order: number
           published: boolean
           created_at: string
+          thumbnail_url: string | null
         }
         Insert: {
           id?: string
@@ -61,6 +62,7 @@ export type Database = {
           order?: number
           published?: boolean
           created_at?: string
+          thumbnail_url?: string | null
         }
         Update: {
           id?: string
@@ -75,6 +77,7 @@ export type Database = {
           order?: number
           published?: boolean
           created_at?: string
+          thumbnail_url?: string | null
         }
         Relationships: [
           {
