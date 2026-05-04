@@ -1,0 +1,51 @@
+.nav {
+  background: #111;
+  color: #fff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.link {
+  display: block;
+  padding: 10px 12px;
+  color: #d1d5db;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.link:hover {
+  background: #1f2937;
+  color: #fff;
+}
+
+.linkActive {
+  background: #1f2937;
+  color: #fff;
+}
+
+.logout {
+  margin-top: auto;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #d1d5db;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.logout:hover {
+  background: #1f2937;
+  color: #fff;
+}
