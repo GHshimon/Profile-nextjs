@@ -25,7 +25,7 @@ export default async function Works({ limit }: { limit?: number }) {
         </div>
 
         <div className="works-grid">
-          {data.map((work: any, index: number) => (
+          {data.map((work, index: number) => (
             <WorkCard key={work.slug} work={work} index={index} />
           ))}
         </div>
