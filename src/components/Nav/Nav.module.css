@@ -11,16 +11,8 @@
   box-shadow:0 10px 30px -18px rgba(20,17,15,.35);
 }
 .brand{
-  display:flex; align-items:center; gap:8px;
-  padding:8px 14px 8px 10px;
-  font-family: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
-  font-weight:800; letter-spacing:-0.01em;
-  font-size:15px;
-}
-.dot{
-  width:22px; height:22px; border-radius:999px;
-  background:conic-gradient(from 200deg,var(--lime),var(--violet),var(--pink),var(--lime));
-  box-shadow:0 0 0 2px var(--bg) inset;
+  display:flex; align-items:center;
+  padding:4px 8px 4px 6px;
 }
 .nav ul{display:flex; list-style:none; gap:0;}
 .nav a{

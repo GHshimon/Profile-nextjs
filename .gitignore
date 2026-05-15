@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Local notes (contains secrets)
 Settings.txt
+
+# Superpowers brainstorm
+.superpowers/

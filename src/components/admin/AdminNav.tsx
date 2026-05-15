@@ -14,7 +14,7 @@ export default function AdminNav() {
   const pathname = usePathname()
   return (
     <nav className={styles.nav}>
-      <div className={styles.brand}>SHIMON.D / ADMIN</div>
+      <div className={styles.brand}>craft. / ADMIN</div>
       {items.map((item) => {
         const active =
           item.href === '/admin'

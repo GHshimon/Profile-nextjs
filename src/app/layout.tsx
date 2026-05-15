@@ -61,9 +61,9 @@ export const metadata: Metadata = {
       'ブランディング × UI/UX を軸に、スタートアップの「最初の一歩」をデザインとコードの両方からつくるフリーランスエンジニア。',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/assets/craft-banner.png',
+        width: 1500,
+        height: 500,
         alt: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
       },
     ],
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
     description:
       'ブランディング × UI/UX を軸に、スタートアップの「最初の一歩」をデザインとコードの両方からつくるフリーランスエンジニア。',
-    images: ['/og-image.png'],
+    images: ['/assets/craft-banner.png'],
   },
   robots: {
     index: true,

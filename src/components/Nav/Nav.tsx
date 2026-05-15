@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Nav.module.css'
@@ -11,7 +12,13 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.brand}>
-        <span className={styles.dot}></span> SHIMON.D
+        <Image
+          src="/assets/craft-logo-transparent.png"
+          width={52}
+          height={52}
+          alt="craft."
+          style={{ objectFit: 'contain' }}
+        />
       </div>
       <ul>
         <li><Link href="/#about">About</Link></li>
