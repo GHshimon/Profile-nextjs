@@ -114,7 +114,8 @@ export default function Contact() {
           <span className="blk">something pop.</span>
         </h2>
         <p className="lead reveal d1">
-          ブランディングのリブートも、新規プロダクトの立ち上げも。<br />
+          DXを進めたい。AIを試したい。でも何から始めればいいかわからない。<br />
+          そんな現場の悩みを、一緒に整理しましょう。<br />
           まずは 30分のカジュアル相談から、お気軽にどうぞ。
         </p>
 

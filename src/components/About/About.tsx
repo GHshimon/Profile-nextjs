@@ -12,7 +12,7 @@ export default function About() {
             <p className="reveal">
               はじめまして、<span className="hl">道地 志門</span>です。<br />
               大分大学 電気電子工学科を卒業後、ソニー・GM&amp;O での 8年間のソフトウェア開発を経て、
-              現在はフリーランス（副業）のWebエンジニアとして活動しています。
+              現在はフリーランスのWebエンジニアとして活動しています。
             </p>
             <p className="reveal d1">
               得意領域は<span className="hl">WEBページ・WEBアプリの開発</span>、
