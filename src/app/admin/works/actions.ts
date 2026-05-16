@@ -55,3 +55,29 @@ export async function deleteWork(id: string) {
   revalidatePath('/works')
   revalidatePath('/')
 }
+
+export async function updateWorksOrder(ids: string[]) {
+  const supabase = await createSupabaseServerClient()
+  const results = await Promise.all(
+    ids.map((id, index) =>
+      supabase.from('works').update({ order: index }).eq('id', id)
+    )
+  )
+  const failed = results.find((r) => r.error)
+  if (failed?.error) throw new Error(failed.error.message)
+  revalidatePath('/admin/works')
+  revalidatePath('/works')
+  revalidatePath('/')
+}
+
+export async function bulkUpdatePublished(ids: string[], published: boolean) {
+  const supabase = await createSupabaseServerClient()
+  const { error } = await supabase
+    .from('works')
+    .update({ published })
+    .in('id', ids)
+  if (error) throw new Error(error.message)
+  revalidatePath('/admin/works')
+  revalidatePath('/works')
+  revalidatePath('/')
+}

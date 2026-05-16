@@ -41,3 +41,17 @@ export async function deleteCategory(id: string) {
   revalidatePath('/admin/categories')
   revalidatePath('/works')
 }
+
+export async function updateCategoriesOrder(ids: string[]) {
+  const supabase = await createSupabaseServerClient()
+  const results = await Promise.all(
+    ids.map((id, index) =>
+      supabase.from('categories').update({ order: index }).eq('id', id)
+    )
+  )
+  const failed = results.find((r) => r.error)
+  if (failed?.error) throw new Error(failed.error.message)
+  revalidatePath('/admin/categories')
+  revalidatePath('/works')
+  revalidatePath('/')
+}
