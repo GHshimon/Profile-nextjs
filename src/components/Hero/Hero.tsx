@@ -75,14 +75,14 @@ export default function Hero() {
               道地 志門 / DOUCHI SHIMON — フリーエンジニア
             </div>
             <p className={`${styles.lede} reveal d3`}>
-              ブランディング × UI/UX を軸に、<br />
-              スタートアップの「最初の一歩」を<br />
-              デザインとコードの両方からつくるフリーランス（副業）。
+              製造業10年の現場経験をベースに、<br />
+              個人事業主・小規模事業者の「困った」を<br />
+              DXとAIで解決するフリーエンジニア。
             </p>
             <div className={`${styles.heroMeta} reveal d4`}>
               <div><b>BASED IN</b>Kagoshima JP</div>
               <div><b>EXPERIENCE</b>1 yr</div>
-              <div><b>FOCUS</b>App Dev · DX</div>
+              <div><b>FOCUS</b>DX · AI</div>
               <div><b>STATUS</b><span style={{ color: 'var(--violet)' }}>●</span> Available</div>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function Hero() {
               <b>9 YRS</b> ENGINEERING
             </div>
             <div className={styles.portraitBadge}>
-              BRANDING<br />×<br />UI/UX
+              DX<br />×<br />AI
             </div>
           </div>
         </div>
