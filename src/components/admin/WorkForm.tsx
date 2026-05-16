@@ -45,6 +45,8 @@ export default function WorkForm({
   initial = empty,
   submitLabel,
 }: Props) {
+  const isEdit = !!initial.number
+
   return (
     <form action={action} className={styles.formGrid}>
       <div className={styles.formRow}>
@@ -61,13 +63,27 @@ export default function WorkForm({
         </select>
       </div>
       <div className={styles.formRow}>
-        <label htmlFor="number">番号（例: 001）</label>
-        <input id="number" name="number" type="text" defaultValue={initial.number} required />
+        <label htmlFor="slug">
+          slug
+          {!isEdit && <span style={{ marginLeft: 8, fontSize: '0.8em', color: '#888' }}>（省略するとタイトルから自動生成）</span>}
+        </label>
+        <input
+          id="slug"
+          name="slug"
+          type="text"
+          defaultValue={initial.slug}
+          pattern="[a-z0-9-]*"
+          title="小文字英数字とハイフンのみ（空欄で自動生成）"
+          placeholder={isEdit ? '' : 'タイトルから自動生成'}
+          readOnly={isEdit}
+        />
       </div>
-      <div className={styles.formRow}>
-        <label htmlFor="slug">slug</label>
-        <input id="slug" name="slug" type="text" defaultValue={initial.slug} required />
-      </div>
+      {isEdit && (
+        <div className={styles.formRow}>
+          <label>番号</label>
+          <span style={{ padding: '6px 0', color: '#666' }}>{initial.number}</span>
+        </div>
+      )}
       <div className={styles.formRow}>
         <label htmlFor="description">概要（一覧カード用）</label>
         <input id="description" name="description" type="text" defaultValue={initial.description} />
