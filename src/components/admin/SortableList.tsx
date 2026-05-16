@@ -65,7 +65,6 @@ export type SortableListProps<T extends { id: string }> = {
     dragHandleListeners: Record<string, unknown> | undefined
   ) => React.ReactNode
   rowClassName?: (isDragging: boolean) => string | undefined
-  onOrderChange: (orderedItems: T[]) => void
 }
 
 export function DragHandle({
@@ -83,12 +82,18 @@ export function DragHandle({
   )
 }
 
-export default function SortableList<T extends { id: string }>({
+type SortableProviderProps<T extends { id: string }> = {
+  items: T[]
+  onOrderChange: (orderedItems: T[]) => void
+  children: React.ReactNode
+}
+
+// Wraps children with DndContext — place this around <table>, not inside <tbody>
+export function SortableProvider<T extends { id: string }>({
   items,
-  renderCells,
-  rowClassName,
   onOrderChange,
-}: SortableListProps<T>) {
+  children,
+}: SortableProviderProps<T>) {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -113,19 +118,30 @@ export default function SortableList<T extends { id: string }>({
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      <SortableContext
-        items={items.map((i) => i.id)}
-        strategy={verticalListSortingStrategy}
-      >
-        {items.map((item) => (
-          <SortableRow
-            key={item.id}
-            item={item}
-            renderCells={renderCells}
-            rowClassName={rowClassName}
-          />
-        ))}
-      </SortableContext>
+      {children}
     </DndContext>
+  )
+}
+
+// Renders sortable rows — place this inside <tbody>
+export default function SortableList<T extends { id: string }>({
+  items,
+  renderCells,
+  rowClassName,
+}: SortableListProps<T>) {
+  return (
+    <SortableContext
+      items={items.map((i) => i.id)}
+      strategy={verticalListSortingStrategy}
+    >
+      {items.map((item) => (
+        <SortableRow
+          key={item.id}
+          item={item}
+          renderCells={renderCells}
+          rowClassName={rowClassName}
+        />
+      ))}
+    </SortableContext>
   )
 }

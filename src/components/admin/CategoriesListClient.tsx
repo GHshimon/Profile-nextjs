@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import Link from 'next/link'
-import SortableList, { DragHandle } from './SortableList'
+import SortableList, { DragHandle, SortableProvider } from './SortableList'
 import DeleteButton from './DeleteButton'
 import { updateCategoriesOrder } from '@/app/admin/categories/actions'
 import { deleteCategory } from '@/app/admin/categories/actions'
@@ -45,50 +45,51 @@ export default function CategoriesListClient({ categories: initialCategories }: 
 
   return (
     <>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={styles.handleCell} />
-            <th>表示名</th>
-            <th>slug</th>
-            <th>順序</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <SortableList
-            items={items}
-            onOrderChange={setItems}
-            rowClassName={(isDragging) =>
-              isDragging ? styles.rowDragging : undefined
-            }
-            renderCells={(cat, listeners) => (
-              <>
-                <td className={styles.handleCell}>
-                  <DragHandle listeners={listeners} />
-                </td>
-                <td>{cat.name}</td>
-                <td>{cat.slug}</td>
-                <td>{cat.order}</td>
-                <td>
-                  <div className={styles.actionRow}>
-                    <Link
-                      href={`/admin/categories/${cat.id}`}
-                      className={`${styles.btn} ${styles.btnSecondary}`}
-                    >
-                      編集
-                    </Link>
-                    <DeleteButton
-                      action={() => deleteCategory(cat.id)}
-                      confirmMessage={`カテゴリ「${cat.name}」を削除しますか？\n（紐づく Works も削除される可能性があります）`}
-                    />
-                  </div>
-                </td>
-              </>
-            )}
-          />
-        </tbody>
-      </table>
+      <SortableProvider items={items} onOrderChange={setItems}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.handleCell} />
+              <th>表示名</th>
+              <th>slug</th>
+              <th>順序</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <SortableList
+              items={items}
+              rowClassName={(isDragging) =>
+                isDragging ? styles.rowDragging : undefined
+              }
+              renderCells={(cat, listeners) => (
+                <>
+                  <td className={styles.handleCell}>
+                    <DragHandle listeners={listeners} />
+                  </td>
+                  <td>{cat.name}</td>
+                  <td>{cat.slug}</td>
+                  <td>{cat.order}</td>
+                  <td>
+                    <div className={styles.actionRow}>
+                      <Link
+                        href={`/admin/categories/${cat.id}`}
+                        className={`${styles.btn} ${styles.btnSecondary}`}
+                      >
+                        編集
+                      </Link>
+                      <DeleteButton
+                        action={() => deleteCategory(cat.id)}
+                        confirmMessage={`カテゴリ「${cat.name}」を削除しますか？\n（紐づく Works も削除される可能性があります）`}
+                      />
+                    </div>
+                  </td>
+                </>
+              )}
+            />
+          </tbody>
+        </table>
+      </SortableProvider>
 
       <div className={styles.orderActions}>
         <button
