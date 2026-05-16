@@ -21,7 +21,16 @@ export default function CategoryForm({ action, initial = empty, submitLabel }: P
     <form action={action} className={styles.formGrid}>
       <div className={styles.formRow}>
         <label htmlFor="slug">slug</label>
-        <input id="slug" name="slug" type="text" defaultValue={initial.slug} required />
+        <input
+          id="slug"
+          name="slug"
+          type="text"
+          defaultValue={initial.slug}
+          required
+          pattern="[a-z0-9-]+"
+          title="小文字英数字とハイフンのみ使用できます（例: my-category）"
+          placeholder="my-category"
+        />
       </div>
       <div className={styles.formRow}>
         <label htmlFor="name">表示名</label>

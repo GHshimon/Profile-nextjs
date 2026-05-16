@@ -7,7 +7,7 @@ import { createSupabaseServerClient } from '@/lib/supabase-server'
 export async function createCategory(formData: FormData) {
   const supabase = await createSupabaseServerClient()
   const payload = {
-    slug: String(formData.get('slug') ?? '').trim(),
+    slug: String(formData.get('slug') ?? '').trim().toLowerCase(),
     name: String(formData.get('name') ?? '').trim(),
     description: String(formData.get('description') ?? ''),
     order: Number(formData.get('order') ?? 0),
@@ -22,7 +22,7 @@ export async function createCategory(formData: FormData) {
 export async function updateCategory(id: string, formData: FormData) {
   const supabase = await createSupabaseServerClient()
   const payload = {
-    slug: String(formData.get('slug') ?? '').trim(),
+    slug: String(formData.get('slug') ?? '').trim().toLowerCase(),
     name: String(formData.get('name') ?? '').trim(),
     description: String(formData.get('description') ?? ''),
     order: Number(formData.get('order') ?? 0),

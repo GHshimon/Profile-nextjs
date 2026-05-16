@@ -11,11 +11,18 @@ function parseTags(raw: string): string[] {
     .filter(Boolean)
 }
 
+function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 function buildPayload(formData: FormData) {
   return {
     category_id: String(formData.get('category_id') ?? ''),
-    slug: String(formData.get('slug') ?? '').trim(),
-    number: String(formData.get('number') ?? '').trim(),
+    slug: String(formData.get('slug') ?? '').trim().toLowerCase(),
     title: String(formData.get('title') ?? '').trim(),
     description: String(formData.get('description') ?? ''),
     detail: String(formData.get('detail') ?? ''),
@@ -29,7 +36,20 @@ function buildPayload(formData: FormData) {
 
 export async function createWork(formData: FormData) {
   const supabase = await createSupabaseServerClient()
-  const { error } = await supabase.from('works').insert(buildPayload(formData))
+
+  const title = String(formData.get('title') ?? '').trim()
+  const rawSlug = String(formData.get('slug') ?? '').trim().toLowerCase()
+  const autoSlug = rawSlug || slugify(title)
+
+  const { data: allWorks } = await supabase.from('works').select('number')
+  const nums = (allWorks ?? [])
+    .map((w) => parseInt(w.number, 10))
+    .filter((n) => !isNaN(n))
+  const nextNum = nums.length > 0 ? Math.max(...nums) + 1 : 1
+  const autoNumber = String(nextNum).padStart(3, '0')
+
+  const payload = { ...buildPayload(formData), slug: autoSlug, number: autoNumber }
+  const { error } = await supabase.from('works').insert(payload)
   if (error) throw new Error(error.message)
   revalidatePath('/admin/works')
   revalidatePath('/works')
