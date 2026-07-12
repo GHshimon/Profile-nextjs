@@ -121,7 +121,7 @@ export default function Contact() {
 
         <form className="contact-form reveal d2" onSubmit={handleSubmit} noValidate>
           <div className="row">
-            <label htmlFor="cf-name">名前 <span className="req">*</span></label>
+            <label htmlFor="cf-name">お名前 <span className="req">*</span></label>
             <input
               id="cf-name"
               type="text"
@@ -145,7 +145,7 @@ export default function Contact() {
           </div>
 
           <div className="row">
-            <label htmlFor="cf-company">会社名</label>
+            <label htmlFor="cf-company">会社名・屋号 <span className="hint">（任意）</span></label>
             <input
               id="cf-company"
               type="text"
@@ -192,7 +192,7 @@ export default function Contact() {
               required
             />
             <label htmlFor="cf-consent" className="inline">
-              <a href="#" className="policy-link">プライバシーポリシー</a>に同意します <span className="req">*</span>
+              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="policy-link">プライバシーポリシー</a>に同意します <span className="req">*</span>
             </label>
           </div>
 
@@ -207,7 +207,7 @@ export default function Contact() {
           </div>
 
           <button type="submit" className="submit" disabled={submitting}>
-            {submitting ? '送信中…' : '送信する'}
+            {submitting ? '送信中…' : '相談内容を送る'}
           </button>
 
           {result.kind === 'success' && (
@@ -224,14 +224,19 @@ export default function Contact() {
           <a href="https://github.com/GHshimon" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
-          <a href="https://x.com/shimon_dev" target="_blank" rel="noopener noreferrer">
-            𝕏 @shimon_dev
+          <a
+            href="https://x.com/shimon_dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X（旧Twitter） @shimon_dev"
+          >
+            <span aria-hidden="true">𝕏</span> @shimon_dev
           </a>
         </div>
 
         <footer>
           <span>© 2026 SHIMON DOUCHI</span>
-          <span>MADE WITH ☕ + ✦ IN TOKYO</span>
+          <span>MADE WITH ☕ + ✦ IN KAGOSHIMA</span>
         </footer>
       </div>
     </section>

@@ -11,8 +11,10 @@ export default function About() {
           <div className="about-copy">
             <p className="reveal">
               はじめまして、<span className="hl">道地 志門</span>です。<br />
-              大分大学 電気電子工学科を卒業後、ソニー・GM&amp;O での 8年間のソフトウェア開発を経て、
-              現在はフリーランスのWebエンジニアとして活動しています。
+              大分大学 工学部 電気電子工学科を卒業後、ソニーGM&amp;Oで8年間、
+              ロボット制御・電気設計を中心とした設備制御開発に従事してきました。
+              現在は株式会社アルバックで装置制御設計に携わりながら、
+              <span className="hl">複業としてWeb制作・DX推進・AI導入の支援</span>を行っています。
             </p>
             <p className="reveal d1">
               得意領域は<span className="hl">WEBページ・WEBアプリの開発</span>、
@@ -45,7 +47,7 @@ export default function About() {
               <p>卒業研究テーマはAI。ハードウェアとソフトウェアの境界で学ぶ。</p>
             </div>
             <div className="tl-item">
-              <div className="yr">2016 – 2024 / 8 YEARS</div>
+              <div className="yr">2016–2024 / 8 YEARS</div>
               <h4>ソニーGM&amp;O 株式会社</h4>
               <p>設備制御設計（ロボット制御、電気設計）</p>
             </div>

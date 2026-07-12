@@ -32,6 +32,59 @@
 }
 .cta:hover{background:var(--violet); color:white;}
 
+/* ===== モバイル: ハンバーガー ===== */
+.burger{
+  display:none;
+  width:44px; height:44px;
+  flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  margin-left:2px;
+  background:transparent; border:none; cursor:pointer;
+  border-radius:999px;
+}
+.burgerBar{
+  display:block; width:22px; height:2px; border-radius:2px;
+  background:var(--ink);
+  transition:transform .25s ease, opacity .2s ease;
+}
+.burgerBarTop{transform:translateY(7px) rotate(45deg);}
+.burgerBarMid{opacity:0;}
+.burgerBarBot{transform:translateY(-7px) rotate(-45deg);}
+
+/* ===== モバイル: フルスクリーンメニュー ===== */
+.overlay{
+  position:fixed; inset:0; z-index:40;
+  background:var(--ink);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px;
+  padding:96px 24px 48px;
+}
+.overlay[hidden]{display:none;}
+.overlayLinks{
+  list-style:none; margin:0; padding:0;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+}
+.overlayLinks a{
+  display:block; padding:12px 20px;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:clamp(34px,11vw,48px); letter-spacing:-0.02em;
+  color:var(--bg);
+  transition:color .2s;
+}
+.overlayLinks a:hover{color:var(--lime);}
+.overlayCta{
+  margin-top:24px;
+  padding:16px 32px;
+  background:var(--lime); color:var(--ink);
+  border-radius:999px;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:18px; letter-spacing:0.01em;
+}
+
 @media (max-width:960px){
   .nav ul{display:none;}
+  .cta{display:none;}
+  .burger{display:flex;}
+}
+@media (min-width:961px){
+  .overlay{display:none;}
 }

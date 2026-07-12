@@ -43,28 +43,28 @@ const BASE_URL = 'https://shimon-dev.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
-    template: '%s | SHIMON DOUCHI',
+    default: 'craft.（道地志門）— 個人事業主・中小企業のためのWeb制作 / DX / AI導入',
+    template: '%s ｜ craft.',
   },
   description:
-    'ブランディング × UI/UX を軸に、スタートアップの「最初の一歩」をデザインとコードの両方からつくるフリーランスエンジニア。Web制作・DX・AI導入のご相談はお気軽に。',
-  keywords: ['Web制作', 'フリーランス', 'UI/UX', 'ブランディング', 'Next.js', 'AI導入', 'DX', '道地志門'],
+    '製造業の現場に10年立つエンジニアが、個人事業主・小規模事業者の業務改善を、Web制作・DX推進・AI導入で支援します。まずは30分のカジュアル相談から、お気軽にご相談ください。',
+  keywords: ['Web制作', '個人事業主', '中小企業', 'DX推進', 'AI導入', '業務改善', '複業エンジニア', 'Next.js', '道地志門', 'craft', '鹿児島'],
   authors: [{ name: 'Shimon Douchi', url: BASE_URL }],
   creator: 'Shimon Douchi',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
     url: BASE_URL,
-    siteName: 'SHIMON DOUCHI',
-    title: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
+    siteName: 'craft.（道地志門）',
+    title: 'craft. — 個人事業主・中小企業のためのWeb制作 / DX / AI導入',
     description:
-      'ブランディング × UI/UX を軸に、スタートアップの「最初の一歩」をデザインとコードの両方からつくるフリーランスエンジニア。',
+      '製造業の現場に10年。個人事業主・小規模事業者の「困った」を、Web制作・DX推進・AI導入で解決します。',
     images: [
       {
         url: '/assets/craft-banner.png',
-        width: 1500,
-        height: 500,
-        alt: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
+        width: 1774,
+        height: 887,
+        alt: 'craft. — 個人事業主・中小企業のためのWeb制作・DX・AI導入（道地志門）',
       },
     ],
   },
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@shimon_dev',
     creator: '@shimon_dev',
-    title: 'SHIMON DOUCHI — Web Engineer / Branding × UI/UX',
+    title: 'craft. — 個人事業主・中小企業のためのWeb制作 / DX / AI導入',
     description:
-      'ブランディング × UI/UX を軸に、スタートアップの「最初の一歩」をデザインとコードの両方からつくるフリーランスエンジニア。',
+      '製造業の現場に10年。個人事業主・小規模事業者の「困った」を、Web制作・DX推進・AI導入で解決します。',
     images: ['/assets/craft-banner.png'],
   },
   robots: {

@@ -72,18 +72,18 @@ export default function Hero() {
               <span className={styles.stamp}>Web Engineer</span>
             </h1>
             <div className={`${styles.nameJp} reveal d2`}>
-              道地 志門 / DOUCHI SHIMON — フリーエンジニア
+              道地 志門 / DOUCHI SHIMON — 複業エンジニア
             </div>
             <p className={`${styles.lede} reveal d3`}>
-              製造業10年の現場経験をベースに、<br />
+              製造業の現場に10年。いまも現場に立つエンジニアが、<br />
               個人事業主・小規模事業者の「困った」を<br />
-              DXとAIで解決するフリーエンジニア。
+              DXとAIで解決します。
             </p>
             <div className={`${styles.heroMeta} reveal d4`}>
               <div><b>BASED IN</b>Kagoshima JP</div>
-              <div><b>EXPERIENCE</b>1 yr</div>
+              <div><b>BACKGROUND</b>MFG 10 YRS</div>
               <div><b>FOCUS</b>DX · AI</div>
-              <div><b>STATUS</b><span style={{ color: 'var(--violet)' }}>●</span> Available</div>
+              <div><b>STATUS</b><span style={{ color: 'oklch(0.75 0.2 128)' }}>●</span> Available</div>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function Hero() {
               />
             </div>
             <div className={styles.portraitTag}>
-              <b>9 YRS</b> ENGINEERING
+              <b>10 YRS</b> MANUFACTURING
             </div>
             <div className={styles.portraitBadge}>
               DX<br />×<br />AI
