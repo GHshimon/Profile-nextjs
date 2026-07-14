@@ -155,3 +155,40 @@
   .s3{width:60px; height:60px;}
   .heroMeta{gap:18px;}
 }
+
+/* ===== ヒーロー CTA ===== */
+.heroCtas{
+  margin-top:36px;
+  display:flex; flex-wrap:wrap; gap:14px;
+}
+.ctaPrimary{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:15px 26px;
+  background:var(--lime); color:var(--ink);
+  border:1.5px solid var(--ink);
+  border-radius:999px;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:15px; letter-spacing:0.01em;
+  box-shadow:4px 5px 0 var(--ink);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.ctaPrimary:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 7px 0 var(--ink);
+  background:oklch(0.94 0.2 128);
+}
+.ctaSecondary{
+  display:inline-flex; align-items:center;
+  padding:15px 24px;
+  border:1.5px solid var(--ink);
+  border-radius:999px;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:15px;
+  background:transparent; color:var(--ink);
+  transition:background .2s ease, color .2s ease;
+}
+.ctaSecondary:hover{background:var(--ink); color:var(--bg);}
+@media (max-width:600px){
+  .heroCtas{gap:10px; margin-top:28px;}
+  .ctaPrimary,.ctaSecondary{font-size:14px; padding:13px 20px;}
+}

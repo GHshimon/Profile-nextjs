@@ -7,6 +7,8 @@ import {
 } from 'next/font/google'
 import Nav from '@/components/Nav/Nav'
 import ScrollReveal from '@/components/ScrollReveal/ScrollReveal'
+import JsonLd from '@/components/JsonLd'
+import { siteGraph } from '@/lib/structuredData'
 import './globals.css'
 
 const bricolage = Bricolage_Grotesque({
@@ -62,8 +64,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/assets/craft-banner.png',
-        width: 1774,
-        height: 887,
+        width: 1200,
+        height: 600,
         alt: 'craft. — 個人事業主・中小企業のためのWeb制作・DX・AI導入（道地志門）',
       },
     ],
@@ -103,6 +105,7 @@ export default function RootLayout({
       className={`${bricolage.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} ${notoSansJP.variable}`}
     >
       <body>
+        <JsonLd data={siteGraph} />
         <Nav />
         {children}
         <ScrollReveal />

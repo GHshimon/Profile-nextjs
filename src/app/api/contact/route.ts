@@ -75,14 +75,18 @@ function validateBody(raw: unknown): { ok: true; data: ContactBody } | { ok: fal
     company = b.company
   }
 
-  const category = b.category
-  if (typeof category !== 'string' || !VALID_CATEGORIES.includes(category as Category)) {
-    return { ok: false, message: 'カテゴリの選択が正しくありません。' }
+  // カテゴリは任意。未選択なら「その他」にフォールバック
+  let category: Category = 'その他'
+  if (b.category !== undefined && b.category !== null && b.category !== '') {
+    if (typeof b.category !== 'string' || !VALID_CATEGORIES.includes(b.category as Category)) {
+      return { ok: false, message: 'カテゴリの選択が正しくありません。' }
+    }
+    category = b.category as Category
   }
 
   const message = b.message
-  if (typeof message !== 'string' || message.length < 20 || message.length > 5000) {
-    return { ok: false, message: 'お問い合わせ内容は20〜5000文字で入力してください。' }
+  if (typeof message !== 'string' || message.trim().length < 1 || message.length > 5000) {
+    return { ok: false, message: 'お問い合わせ内容を入力してください。（5000文字以内）' }
   }
 
   if (b.consent !== true) {
@@ -215,6 +219,16 @@ export async function POST(request: NextRequest) {
       { ok: false, message: 'リクエスト形式が正しくありません。' },
       { status: 400 },
     )
+  }
+
+  // Honeypot: 隠しフィールドに値が入っていれば bot とみなし、成功を装って破棄する
+  if (
+    raw &&
+    typeof raw === 'object' &&
+    typeof (raw as Record<string, unknown>).website === 'string' &&
+    ((raw as Record<string, unknown>).website as string).trim() !== ''
+  ) {
+    return NextResponse.json({ ok: true }, { status: 200 })
   }
 
   const parsed = validateBody(raw)

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from './Hero.module.css'
 
 export default function Hero() {
@@ -84,6 +85,15 @@ export default function Hero() {
               <div><b>BACKGROUND</b>MFG 10 YRS</div>
               <div><b>FOCUS</b>DX · AI</div>
               <div><b>STATUS</b><span style={{ color: 'oklch(0.75 0.2 128)' }}>●</span> Available</div>
+            </div>
+
+            <div className={`${styles.heroCtas} reveal d5`}>
+              <Link href="/#contact" className={styles.ctaPrimary}>
+                30分の無料相談を予約する →
+              </Link>
+              <Link href="/works" className={styles.ctaSecondary}>
+                実績を見る
+              </Link>
             </div>
           </div>
 

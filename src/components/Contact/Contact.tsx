@@ -12,6 +12,7 @@ type FormState = {
   category: Category | ''
   message: string
   consent: boolean
+  website: string // honeypot（人間は空のまま）
 }
 
 const initialForm: FormState = {
@@ -21,6 +22,7 @@ const initialForm: FormState = {
   category: '',
   message: '',
   consent: false,
+  website: '',
 }
 
 const TURNSTILE_SITE_KEY =
@@ -42,8 +44,7 @@ export default function Contact() {
     if (!form.name.trim()) return 'お名前を入力してください。'
     if (!form.email.trim()) return 'メールアドレスを入力してください。'
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return 'メールアドレスの形式が正しくありません。'
-    if (!form.category) return '用件カテゴリを選択してください。'
-    if (form.message.trim().length < 20) return 'お問い合わせ内容は20文字以上で入力してください。'
+    if (!form.message.trim()) return 'お問い合わせ内容を入力してください。'
     if (!form.consent) return 'プライバシーポリシーへの同意が必要です。'
     if (!turnstileToken) return 'セキュリティ確認(Turnstile)を完了してください。'
     return null
@@ -120,6 +121,18 @@ export default function Contact() {
         </p>
 
         <form className="contact-form reveal d2" onSubmit={handleSubmit} noValidate>
+          <div aria-hidden="true" className="hp-field">
+            <label htmlFor="cf-website">Website（記入不要）</label>
+            <input
+              id="cf-website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={(e) => update('website', e.target.value)}
+            />
+          </div>
+
           <div className="row">
             <label htmlFor="cf-name">お名前 <span className="req">*</span></label>
             <input
@@ -156,14 +169,13 @@ export default function Contact() {
           </div>
 
           <div className="row">
-            <label htmlFor="cf-category">用件カテゴリ <span className="req">*</span></label>
+            <label htmlFor="cf-category">用件カテゴリ <span className="hint">（任意）</span></label>
             <select
               id="cf-category"
               value={form.category}
               onChange={(e) => update('category', e.target.value as Category | '')}
-              required
             >
-              <option value="" disabled>選択してください</option>
+              <option value="">選択してください（任意）</option>
               <option value="Web制作">Web制作</option>
               <option value="DX相談">DX相談</option>
               <option value="AI導入">AI導入</option>
@@ -172,14 +184,13 @@ export default function Contact() {
           </div>
 
           <div className="row">
-            <label htmlFor="cf-message">内容 <span className="req">*</span> <span className="hint">（20文字以上）</span></label>
+            <label htmlFor="cf-message">内容 <span className="req">*</span> <span className="hint">（お困りごとを一言でも）</span></label>
             <textarea
               id="cf-message"
               rows={5}
               value={form.message}
               onChange={(e) => update('message', e.target.value)}
               required
-              minLength={20}
             />
           </div>
 

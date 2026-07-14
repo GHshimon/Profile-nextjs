@@ -860,3 +860,11 @@ footer{
   transition:background .2s, transform .2s;
 }
 .works-empty-cta:hover{background:var(--violet); color:white; transform:translateY(-2px);}
+
+/* ========== HONEYPOT (bot trap・視覚的に隠す) ========== */
+.hp-field{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px; height:1px;
+  overflow:hidden;
+}
