@@ -868,3 +868,31 @@ footer{
   width:1px; height:1px;
   overflow:hidden;
 }
+
+/* ========== WORK DETAIL (/works/[cat]/[slug]) ========== */
+.work-detail{padding:140px 0 120px; max-width:820px;}
+.breadcrumb{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
+  font-size:12px; letter-spacing:0.06em;
+  color:var(--ink-soft);
+  margin-bottom:36px;
+}
+.breadcrumb a{color:var(--ink-soft); transition:color .2s;}
+.breadcrumb a:hover{color:var(--violet);}
+.breadcrumb-sep{opacity:0.5;}
+.breadcrumb [aria-current="page"]{color:var(--ink); font-weight:700;}
+.work-detail h1{
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:800;
+  font-size:clamp(34px,5vw,60px);
+  letter-spacing:-0.03em; line-height:1.06;
+  margin-bottom:20px;
+}
+.work-detail .work-lead{
+  font-size:18px; line-height:1.8; color:var(--ink-soft); margin-bottom:24px;
+}
+.work-detail .work-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px;}
+.work-detail .work-body{
+  font-size:16px; line-height:1.9; color:var(--ink); white-space:pre-wrap;
+}
