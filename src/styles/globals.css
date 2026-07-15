@@ -18,7 +18,7 @@
 html{scroll-behavior:smooth;}
 html,body{background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased;}
 body{
-  font-family:"Noto Sans JP","Bricolage Grotesque",system-ui,sans-serif;
+  font-family:var(--font-noto),"Noto Sans JP",system-ui,sans-serif;
   font-weight:500;
   overflow-x:hidden;
 }
@@ -51,7 +51,7 @@ body::before{
 .nav .brand{
   display:flex; align-items:center; gap:8px;
   padding:8px 14px 8px 10px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800; letter-spacing:-0.01em;
   font-size:15px;
 }
@@ -73,7 +73,7 @@ body::before{
   padding:10px 16px; font-size:13px; font-weight:700;
   background:var(--ink); color:var(--bg);
   border-radius:999px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   letter-spacing:0.01em;
 }
 .nav .cta:hover{background:var(--violet); color:white;}
@@ -96,7 +96,7 @@ section{position:relative;}
 }
 .eyebrow{
   display:inline-flex; align-items:center; gap:10px;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
   color:var(--ink-soft);
   padding:8px 14px;
@@ -117,14 +117,14 @@ section{position:relative;}
 
 .hero h1{
   margin-top:22px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800;
   font-size:clamp(64px,9.2vw,148px);
   line-height:0.92;
   letter-spacing:-0.045em;
 }
 .hero h1 .it{
-  font-family:"Instrument Serif",serif;
+  font-family:var(--font-instrument),"Instrument Serif",serif;
   font-weight:400; font-style:italic;
   letter-spacing:-0.01em;
   color:var(--violet);
@@ -140,7 +140,7 @@ section{position:relative;}
 .hero .name-jp{
   margin-top:18px;
   font-size:16px; color:var(--ink-soft);
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   letter-spacing:0.12em;
 }
 .hero .lede{
@@ -152,7 +152,7 @@ section{position:relative;}
 .hero-meta{
   margin-top:40px;
   display:flex; gap:28px; flex-wrap:wrap;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
   color:var(--ink-soft);
 }
@@ -192,7 +192,7 @@ section{position:relative;}
   background:var(--ink); color:var(--bg);
   padding:14px 18px;
   border-radius:16px;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px; letter-spacing:0.14em;
   transform:rotate(6deg);
   z-index:3;
@@ -210,7 +210,7 @@ section{position:relative;}
   color:var(--ink);
   display:grid; place-items:center;
   text-align:center;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800;
   font-size:13px;
   line-height:1.2;
@@ -248,7 +248,7 @@ section{position:relative;}
   display:flex; gap:60px;
   white-space:nowrap;
   animation:scroll 32s linear infinite;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800;
   font-size:42px;
   letter-spacing:-0.02em;
@@ -256,7 +256,7 @@ section{position:relative;}
 }
 .marquee-track span{display:inline-flex; align-items:center; gap:60px;}
 .marquee-track em{
-  font-family:"Instrument Serif",serif; font-style:italic; font-weight:400;
+  font-family:var(--font-instrument),"Instrument Serif",serif; font-style:italic; font-weight:400;
   color:var(--lime);
 }
 .marquee-track .star{color:var(--lime);}
@@ -266,20 +266,20 @@ section{position:relative;}
 .about{padding:140px 0 120px;}
 .section-head{display:flex; align-items:baseline; gap:18px; margin-bottom:60px;}
 .section-head .num{
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:12px;
   color:var(--ink-soft);
   letter-spacing:0.18em;
 }
 .section-head h2{
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800;
   font-size:clamp(40px,5.4vw,76px);
   letter-spacing:-0.035em;
   line-height:1;
 }
 .section-head h2 em{
-  font-family:"Instrument Serif",serif;
+  font-family:var(--font-instrument),"Instrument Serif",serif;
   font-weight:400; font-style:italic; color:var(--violet);
 }
 
@@ -315,20 +315,20 @@ section{position:relative;}
 }
 .tl-item.now::before{background:var(--lime);}
 .tl-item .yr{
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px; letter-spacing:0.16em;
   color:var(--ink-soft); margin-bottom:4px;
 }
 .tl-item h4{font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px;}
 .tl-item p{font-size:14px; color:var(--ink-soft);}
-.tl-item.now .yr{color:var(--violet);}
+.tl-item.now .yr{color:oklch(0.55 0.22 295);}
 
 .skill-row{margin-top:28px; display:flex; flex-wrap:wrap; gap:8px;}
 .pill{
   padding:9px 16px;
   border:1.5px solid var(--ink);
   border-radius:999px;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:12px;
   background:var(--bg);
   transition:transform .2s,background .2s;
@@ -336,7 +336,7 @@ section{position:relative;}
 .pill:hover{transform:translateY(-2px); background:var(--lime);}
 .pill.solid{background:var(--ink); color:var(--bg);}
 .pill.violet{background:var(--violet); color:white; border-color:var(--violet);}
-.pill.pink{background:var(--pink); color:white; border-color:var(--pink);}
+.pill.pink{background:var(--pink); color:var(--ink); border-color:var(--pink);}
 
 /* ========== WORKS ========== */
 .works{padding:80px 0 140px;}
@@ -371,12 +371,12 @@ section{position:relative;}
   padding:6px 10px;
   border-radius:999px;
   border:1px solid var(--ink);
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
+  font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
 }
 .card .body{padding:22px 24px 24px;}
 .card .body h3{
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:700;
   font-size:22px;
   letter-spacing:-0.015em;
@@ -385,8 +385,8 @@ section{position:relative;}
 .card .body p{font-size:13px; color:var(--ink-soft); line-height:1.7;}
 .card .body .tags{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px;}
 .card .body .tags span{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
+  font-size:11px;
   color:var(--ink-soft);
   padding:4px 8px;
   border-radius:999px;
@@ -497,7 +497,7 @@ section{position:relative;}
   background:rgba(250,246,238,.06);
 }
 .str .num{
-  font-family:"Instrument Serif",serif;
+  font-family:var(--font-instrument),"Instrument Serif",serif;
   font-style:italic;
   font-size:88px;
   line-height:1;
@@ -506,13 +506,13 @@ section{position:relative;}
 }
 .str h3{
   margin-top:16px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-size:26px; font-weight:700;
   letter-spacing:-0.02em;
 }
 .str h3 .ja{
   display:block;
-  font-family:"Noto Sans JP",sans-serif;
+  font-family:var(--font-noto),"Noto Sans JP",sans-serif;
   font-size:14px; font-weight:500;
   color:rgba(250,246,238,.6);
   margin-top:4px;
@@ -530,8 +530,8 @@ section{position:relative;}
   display:flex; flex-wrap:wrap; gap:8px;
 }
 .str .line span{
-  font-family:"JetBrains Mono",monospace;
-  font-size:10px;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
+  font-size:11px;
   padding:4px 10px;
   border:1px solid rgba(250,246,238,.25);
   border-radius:999px;
@@ -545,14 +545,14 @@ section{position:relative;}
   position:relative; overflow:hidden;
 }
 .contact h2{
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:800;
   font-size:clamp(60px,9vw,168px);
   letter-spacing:-0.05em;
   line-height:.9;
 }
 .contact h2 em{
-  font-family:"Instrument Serif",serif;
+  font-family:var(--font-instrument),"Instrument Serif",serif;
   font-style:italic; font-weight:400;
   color:var(--pink);
 }
@@ -579,7 +579,7 @@ section{position:relative;}
   padding:18px 28px;
   border:1.5px solid var(--ink);
   border-radius:999px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-size:18px;
   background:white;
   min-width:420px;
@@ -596,7 +596,7 @@ section{position:relative;}
 .clink .arr{margin-left:auto; transition:transform .25s;}
 .clink:hover{background:var(--lime); transform:translateX(6px);}
 .clink:hover .arr{transform:translateX(6px);}
-.clink:nth-child(2):hover{background:var(--pink); color:white;}
+.clink:nth-child(2):hover{background:var(--pink); color:var(--ink);}
 .clink:nth-child(2):hover .ico{background:white; color:var(--pink);}
 .clink:nth-child(3):hover{background:var(--violet); color:white;}
 .clink:nth-child(3):hover .ico{background:white; color:var(--violet);}
@@ -605,7 +605,7 @@ footer{
   border-top:1px solid rgba(20,17,15,.12);
   padding:28px 0;
   display:flex; justify-content:space-between; align-items:center;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px; letter-spacing:0.12em;
   color:var(--ink-soft);
   text-transform:uppercase;
@@ -640,7 +640,7 @@ footer{
 .contact-form .row{margin-bottom:18px;}
 .contact-form label{
   display:block;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:11px;
   letter-spacing:0.16em;
   text-transform:uppercase;
@@ -652,7 +652,7 @@ footer{
   text-transform:none;
   letter-spacing:0;
   color:var(--ink-soft);
-  font-size:10px;
+  font-size:11px;
   margin-left:4px;
 }
 .contact-form input[type="text"],
@@ -664,7 +664,7 @@ footer{
   border:1.5px solid var(--ink);
   border-radius:12px;
   background:white;
-  font-family:"Noto Sans JP",sans-serif;
+  font-family:var(--font-noto),"Noto Sans JP",sans-serif;
   font-size:15px;
   color:var(--ink);
   transition:border-color .2s,box-shadow .2s;
@@ -691,7 +691,7 @@ footer{
 .contact-form label.inline{
   display:inline;
   margin:0;
-  font-family:"Noto Sans JP",sans-serif;
+  font-family:var(--font-noto),"Noto Sans JP",sans-serif;
   font-size:13px;
   letter-spacing:0;
   text-transform:none;
@@ -711,7 +711,7 @@ footer{
   color:var(--bg);
   border:none;
   border-radius:999px;
-  font-family:"Bricolage Grotesque",sans-serif;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
   font-weight:700;
   font-size:15px;
   letter-spacing:0.02em;
@@ -741,7 +741,7 @@ footer{
 }
 .form-result.error{
   background:var(--pink);
-  color:white;
+  color:var(--ink);
   border-color:var(--pink);
 }
 .contact-other{
@@ -751,7 +751,7 @@ footer{
   justify-content:center;
   align-items:center;
   gap:18px;
-  font-family:"JetBrains Mono",monospace;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
   font-size:12px;
   letter-spacing:0.1em;
   color:var(--ink-soft);
@@ -759,7 +759,7 @@ footer{
 .contact-other .other-label{
   text-transform:uppercase;
   letter-spacing:0.18em;
-  font-size:10px;
+  font-size:11px;
   color:var(--ink-soft);
   opacity:0.7;
 }
@@ -793,7 +793,7 @@ footer{
   .hero h1{font-size:clamp(40px,12vw,72px);}
   .portrait-stage{max-width:300px;}
   .portrait-badge{right:-8px; bottom:4%; width:100px; height:100px; font-size:11px;}
-  .portrait-tag{right:0; padding:10px 14px; font-size:10px;}
+  .portrait-tag{right:0; padding:10px 14px; font-size:11px;}
   .portrait-tag b{font-size:12px;}
   .deco.s1{width:120px; height:120px; right:-30px;}
   .deco.s2{left:56%; bottom:-6%; width:92px; height:92px;}
@@ -806,4 +806,93 @@ footer{
   .strengths{padding:80px 0 100px; margin:0 8px;}
   .contact{padding:80px 0 60px;}
   .contact h2{font-size:clamp(48px,12vw,80px);}
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .reveal{opacity:1!important; transform:none!important;}
+}
+
+/* ========== WORKS INDEX (/works) ========== */
+.works-index{padding:160px 0 120px;}
+.works-cat-list{list-style:none; display:grid; gap:16px; max-width:760px;}
+.works-cat{
+  display:flex; align-items:center; gap:16px;
+  padding:24px 28px;
+  border:1.5px solid var(--ink);
+  border-radius:var(--r-lg);
+  background:white;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.works-cat:hover{transform:translateY(-3px); box-shadow:6px 8px 0 var(--ink); background:var(--lime);}
+.works-cat-name{
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:22px; letter-spacing:-0.015em;
+}
+.works-cat-desc{font-size:14px; color:var(--ink-soft);}
+.works-cat-arr{margin-left:auto; font-size:20px;}
+.works-empty{
+  max-width:560px;
+  border:1.5px dashed var(--ink);
+  border-radius:var(--r-lg);
+  padding:48px 36px;
+  text-align:center;
+  background:rgba(255,255,255,.5);
+}
+.works-empty-lead{
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700; font-size:22px; margin-bottom:12px;
+}
+.works-empty-sub{color:var(--ink-soft); line-height:1.8; margin-bottom:28px; font-size:15px;}
+.works-empty-cta{
+  display:inline-block; padding:14px 28px;
+  background:var(--ink); color:var(--bg);
+  border-radius:999px;
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:700;
+  transition:background .2s, transform .2s;
+}
+.works-empty-cta:hover{background:var(--violet); color:white; transform:translateY(-2px);}
+
+/* ========== HONEYPOT (bot trap・視覚的に隠す) ========== */
+.hp-field{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px; height:1px;
+  overflow:hidden;
+}
+
+/* ========== WORK DETAIL (/works/[cat]/[slug]) ========== */
+.work-detail{padding:140px 0 120px; max-width:820px;}
+.breadcrumb{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  font-family:var(--font-jetbrains),var(--font-noto),"JetBrains Mono",monospace;
+  font-size:12px; letter-spacing:0.06em;
+  color:var(--ink-soft);
+  margin-bottom:36px;
+}
+.breadcrumb a{color:var(--ink-soft); transition:color .2s;}
+.breadcrumb a:hover{color:var(--violet);}
+.breadcrumb-sep{opacity:0.5;}
+.breadcrumb [aria-current="page"]{color:var(--ink); font-weight:700;}
+.work-detail h1{
+  font-family:var(--font-bricolage),"Bricolage Grotesque",sans-serif;
+  font-weight:800;
+  font-size:clamp(34px,5vw,60px);
+  letter-spacing:-0.03em; line-height:1.06;
+  margin-bottom:20px;
+}
+.work-detail .work-lead{
+  font-size:18px; line-height:1.8; color:var(--ink-soft); margin-bottom:24px;
+}
+.work-detail .work-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px;}
+.work-detail .work-body{
+  font-size:16px; line-height:1.9; color:var(--ink); white-space:pre-wrap;
 }
